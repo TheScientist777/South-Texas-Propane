@@ -13,8 +13,10 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <!-- Company Logo -->
-            <a class="navbar-brand" href="#">South Texas Propane</a>
-
+            <a class="navbar-brand" href="#">
+                <img src="company-logo.png" alt="Company Logo" style="height: 30px; margin-right: 10px;">
+                South Texas Propane
+            </a>
             <!-- Centered Search Bar -->
             <form class="d-flex mx-auto" style="width: 50%;">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
