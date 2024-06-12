@@ -17,16 +17,19 @@
                 <img src="company-logo.png" alt="Company Logo" style="height: 30px; margin-right: 10px;">
                 South Texas Propane
             </a>
+
             <!-- Centered Search Bar -->
             <form class="d-flex mx-auto" style="width: 50%;">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
 
-            <!-- Right-aligned Icons (Profile+Cart) -->
+            <!-- Right-aligned Icons (Profile+Cart+Building+WiFi) -->
             <div class="d-flex">
+                <a class="nav-link" href="#"><i class="fas fa-building"></i></a>
                 <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
                 <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
+                <span id="wifiIcon"></span>
             </div>
         </div>
     </nav>
@@ -35,5 +38,26 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlAHjVt8i8eW58RqldRn3U6nPeGzIdkNs3sn4xQ0o+8pcY1F2P17VJ6uBYD" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+    <script>
+        // Function to update the WiFi icon based on the connection status
+        function updateWifiIcon() {
+            const wifiIcon = document.getElementById('wifiIcon');
+            const connection = navigator.onLine ? 'online' : 'offline';
+
+            if (connection === 'online') {
+                wifiIcon.innerHTML = '<i class="fas fa-wifi"></i>';
+            } else {
+                wifiIcon.innerHTML = '<i class="fas fa-wifi-slash"></i>';
+            }
+        }
+
+        // Call the updateWifiIcon function initially
+        updateWifiIcon();
+
+        // Listen for online/offline events and update the icon accordingly
+        window.addEventListener('online', updateWifiIcon);
+        window.addEventListener('offline', updateWifiIcon);
+    </script>
 </body>
 </html>
