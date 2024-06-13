@@ -24,11 +24,12 @@
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
 
-            <!-- Right-aligned Icons (Profile+Cart+Building) -->
+            <!-- Right-aligned Icons (Profile+Cart+Building+WiFi) -->
             <div class="d-flex">
                 <a class="nav-link" href="#" data-toggle="modal" data-target="#locationModal"><i class="fas fa-building"></i></a>
-                <a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
+                <a class="nav-link" href="checkout.html"><i class="fas fa-shopping-cart"></i></a>
                 <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
+                <span id="wifiIcon"><i class="fas fa-wifi"></i></span>
             </div>
         </div>
     </nav>
