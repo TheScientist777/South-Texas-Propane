@@ -1,11 +1,16 @@
-/* Adjust the size of the carousel container */
+/* Adjusts the size of the carousel container */
 #bannerCarousel {
     max-width: 600px; /* Adjust the maximum width as needed */
     margin: 0 auto; /* Center the carousel horizontally */
 }
 
-/* Adjust the size of the carousel images */
+/* Adjusts the size of the carousel images */
+#bannerCarousel .carousel-inner {
+    max-height: 125px; /* Adjust the maximum height as needed */
+}
+
 #bannerCarousel .carousel-item img {
-    max-height: 250px; /* Adjust the maximum height as needed */
+    width: 100%;
+    height: 100%;
     object-fit: cover; /* Maintain aspect ratio and fill the container */
 }
