@@ -117,7 +117,7 @@
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Add your news and updates content here -->
+                    <!-- News and updates content here -->
                     <h6>New Update</h6>
                     <p>We have launched a new product line for residential customers.</p>
                     <h6>Past Update</h6>
