@@ -1,0 +1,11 @@
+/* Adjust the size of the carousel container */
+#bannerCarousel {
+    max-width: 600px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the carousel horizontally */
+}
+
+/* Adjust the size of the carousel images */
+#bannerCarousel .carousel-item img {
+    max-height: 250px; /* Adjust the maximum height as needed */
+    object-fit: cover; /* Maintain aspect ratio and fill the container */
+}
