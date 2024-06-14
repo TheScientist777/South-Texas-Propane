@@ -1,6 +1,6 @@
 /* Adjusts the size of the carousel container */
 #bannerCarousel {
-    max-width: 600px; /* Adjust the maximum width as needed */
+    max-width: 50px; /* Adjust the maximum width as needed */
     margin: 0 auto; /* Center the carousel horizontally */
 }
 
@@ -11,7 +11,7 @@
 
 #bannerCarousel .carousel-item img {
     width: 100%;
-    height: 100%px;
+    height: 100%;
     object-fit: scale-down; /* Maintain aspect ratio and fill the container */
 }
 
