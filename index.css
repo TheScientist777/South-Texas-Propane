@@ -6,13 +6,13 @@
 
 /* Adjusts the size of the carousel images */
 #bannerCarousel .carousel-inner {
-    max-height: 125px; /* Adjust the maximum height as needed */
+    max-height: 25px; /* Adjust the maximum height as needed */
 }
 
 #bannerCarousel .carousel-item img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Maintain aspect ratio and fill the container */
+    height: 100%px;
+    object-fit: scale-down; /* Maintain aspect ratio and fill the container */
 }
 
 /* Weekly Sale Items */
