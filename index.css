@@ -1,18 +1,31 @@
+body {
+    background-color: #F5F5DC; /* Beige background */
+}
+
+.navbar {
+    background-color: #8B0000 !important; /* Dark red for the navbar */
+}
+
+.navbar-brand,
+.nav-link {
+    color: #F5F5DC !important; /* Beige text color for navbar items */
+}
+
 /* Adjusts the size of the carousel container */
 #bannerCarousel {
-    max-width: 50px; /* Adjust the maximum width as needed */
-    margin: 0 auto; /* Center the carousel horizontally */
+    max-width: 50px;
+    margin: 0 auto;
 }
 
 /* Adjusts the size of the carousel images */
 #bannerCarousel .carousel-inner {
-    max-height: 25px; /* Adjust the maximum height as needed */
+    max-height: 25px;
 }
 
 #bannerCarousel .carousel-item img {
     width: 100%;
     height: 100%;
-    object-fit: scale-down; /* Maintain aspect ratio and fill the container */
+    object-fit: scale-down;
 }
 
 /* Weekly Sale Items */
@@ -20,6 +33,7 @@
     border: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    background-color: #FAFAD2; /* Light Goldenrod Yellow for cards */
 }
 
 .card:hover {
@@ -37,4 +51,23 @@
 
 .text-danger {
     font-weight: bold;
+}
+
+.sidebar {
+    background-color: #F5DEB3 !important; /* Wheat color for the sidebar */
+}
+
+.accordion-button {
+    background-color: #CD5C5C !important; /* Indian Red for accordion buttons */
+    color: #F5F5DC !important; /* Beige text color for accordion buttons */
+}
+
+.btn-outline-success {
+    color: #8B0000 !important;
+    border-color: #8B0000 !important;
+}
+
+.btn-outline-success:hover {
+    background-color: #8B0000 !important;
+    color: #F5F5DC !important;
 }
