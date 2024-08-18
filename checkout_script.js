@@ -77,6 +77,6 @@ const bankCards = [
   
   function proceedToContact() {
     // Redirect to "contact.html"
-    window.location.href = "contact.html";
+    window.location.href = "order contact.html";
   }
   
