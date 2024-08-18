@@ -1,0 +1,77 @@
+/* Styles for the Checkout page */
+
+body {
+    background-color: #1d1d1d;
+    color: #d1d1d1;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    /* Set the background image for the body */
+    background-image: url('Password.jpg');
+    background-size: cover; /* Adjust as needed */
+  }
+  
+  body.exit-background {
+    background-image: url('Exit background.jpg') !important;
+  }
+  
+    
+    
+    
+    .container {
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .header {
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+    
+    h1 {
+      margin: 0;
+    }
+    
+    .password-box,
+    .bank-card-box,
+    .shipping-address-box,
+    .order-summary-box {
+      display: hidden;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      max-width: 500px;
+    }
+    
+    .password-box h2,
+    .bank-card-box h2,
+    .shipping-address-box h2,
+    .order-summary-box h2 {
+      margin-top: 0;
+    }
+    
+    .password-input {
+      margin: 10px;
+      padding: 8px;
+      font-size: 16px;
+    }
+    
+    .password-submit-button,
+    .place-order-button {
+      margin-top: 10px;
+      padding: 12px 24px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #545454;
+      color: #d1d1d1;
+    }
+    
+    .footer {
+      margin-top: 50px;
+      font-size: 12px;
+      color: #777;
+    }
+    

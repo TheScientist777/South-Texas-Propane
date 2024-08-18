@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="/checkout_style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Checkout</h1>
+    </header>
+
+    <div class="password-box" id="password-box">
+      <h2>Enter Password</h2>
+      <input type="password" id="password-input">
+      <button class="password-submit-button" onclick="checkPassword()">Submit</button>
+    </div>
+
+    <div class="bank-card-box" id="bank-card-box" style="display: none;">
+      <h2>Select Bank Card</h2>
+      <select id="bank-card-select">
+        <!-- Add options for bank cards here -->
+      </select>
+    </div>
+
+    <div class="shipping-address-box" id="shipping-address-box" style="display: none;">
+      <h2>Select Shipping Address</h2>
+      <select id="shipping-address-select">
+        <!-- Add options for saved shipping addresses here -->
+      </select>
+    </div>
+
+    <div class="order-summary-box" id="order-summary-box" style="display: none;">
+      <h2>Order Summary</h2>
+      <p id="order-item">Item: </p>
+      <p id="order-price">Price: </p>
+      <p id="order-shipping-date">Estimated Shipping Date: </p>
+    </div>
+
+    <button class="place-order-button" id="place-order-button" style="display: none;" onclick="proceedToContact()">Place Order</button>
+
+    <p class="footer">© 2023 Checkout Page. All rights reserved.</p>
+  </div>
+
+  <script src="checkout_script.js"></script>
+</body>
+</html>
