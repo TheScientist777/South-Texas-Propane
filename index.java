@@ -1,23 +1,51 @@
 document.addEventListener('DOMContentLoaded', function() {
     const accordionButtons = document.querySelectorAll('.accordion-button');
     const itemsContainer = document.getElementById('itemsContainer');
+    let currentPage = 1;
+    let currentCategory = '';
+    const itemsPerPage = 7;
 
     accordionButtons.forEach(button => {
         button.addEventListener('click', function() {
             const category = this.textContent.trim();
+            currentCategory = category;
+            currentPage = 1;
             loadItems(category);
         });
     });
 
     function loadItems(category) {
-        // This is where you'd typically make an AJAX call to your server
-        // For this example, we'll just use some dummy data
-        const items = getDummyItems(category);
-        displayItems(items);
+        const items = getItemsByCategory(category);
+        displayItems(items, category);
+    }
+
+    function getItemsByCategory(category) {
+        if (category === 'Fastenal') {
+            return getFastenalItems();
+        } else {
+            return getDummyItems(category);
+        }
+    }
+
+    function getFastenalItems() {
+        const fastenalItems = [];
+        for (let i = 1; i <= 72; i++) {
+            if (i === 2) {
+                fastenalItems.push({
+                    name: '1/4"-20 ASTM A563 Grade A Zinc Finish Steel Jam Nut',
+                    price: '15¢'
+                });
+            } else {
+                fastenalItems.push({
+                    name: `Fastenal Item ${i}`,
+                    price: `$${(Math.random() * 50 + 5).toFixed(2)}`
+                });
+            }
+        }
+        return fastenalItems;
     }
 
     function getDummyItems(category) {
-        // Return dummy items based on category
         return [
             { name: `${category} Item 1`, price: '$19.99' },
             { name: `${category} Item 2`, price: '$29.99' },
@@ -25,14 +53,57 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
     }
 
-    function displayItems(items) {
+    function displayItems(allItems, category) {
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const itemsToShow = allItems.slice(startIndex, endIndex);
+        const totalPages = Math.ceil(allItems.length / itemsPerPage);
+
         itemsContainer.innerHTML = '';
-        items.forEach(item => {
+        
+        itemsToShow.forEach(item => {
             const itemElement = document.createElement('div');
-            itemElement.className = 'item';
-            itemElement.innerHTML = `<h3>${item.name}</h3><p>${item.price}</p>`;
+            itemElement.className = 'item mb-3 p-3 border rounded';
+            itemElement.innerHTML = `<h5>${item.name}</h5><p class="text-success fw-bold">${item.price}</p>`;
             itemsContainer.appendChild(itemElement);
         });
+
+        // Add pagination controls if needed
+        if (totalPages > 1) {
+            const paginationDiv = document.createElement('div');
+            paginationDiv.className = 'pagination-controls mt-4 text-center';
+            
+            const prevButton = document.createElement('button');
+            prevButton.className = 'btn btn-outline-primary me-2';
+            prevButton.textContent = 'Previous';
+            prevButton.disabled = currentPage === 1;
+            prevButton.onclick = () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    loadItems(currentCategory);
+                }
+            };
+
+            const pageInfo = document.createElement('span');
+            pageInfo.className = 'mx-3';
+            pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+
+            const nextButton = document.createElement('button');
+            nextButton.className = 'btn btn-outline-primary ms-2';
+            nextButton.textContent = 'Next';
+            nextButton.disabled = currentPage === totalPages;
+            nextButton.onclick = () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    loadItems(currentCategory);
+                }
+            };
+
+            paginationDiv.appendChild(prevButton);
+            paginationDiv.appendChild(pageInfo);
+            paginationDiv.appendChild(nextButton);
+            itemsContainer.appendChild(paginationDiv);
+        }
     }
 
     // Load initial items
