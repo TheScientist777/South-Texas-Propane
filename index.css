@@ -90,3 +90,14 @@ body {
     color: #F5F5DC !important;
 }
 
+/* Product card styles */
+.product-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: #FFFFFF;
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+

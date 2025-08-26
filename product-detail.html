@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="product-title">Product Details - South Texas Propane</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="company-logo.png" alt="Company Logo" style="height: 30px; margin-right: 10px;">
+                South Texas Propane
+            </a>
+            <div class="d-flex">
+                <a class="nav-link" href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a class="nav-link" href="checkout.html"><i class="fas fa-shopping-cart"></i></a>
+                <a class="nav-link" href="#"><i class="fas fa-user"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <img id="product-image" src="" alt="" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6">
+                <h1 id="product-name"></h1>
+                <h3 id="product-price" class="text-success"></h3>
+                <p class="text-muted">Product ID: <span id="product-id"></span></p>
+                
+                <div class="mt-4">
+                    <div class="form-group mb-3">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" class="form-control" value="1" min="1" style="width: 100px; display: inline-block;">
+                    </div>
+                    
+                    <button id="add-to-cart-btn" class="btn btn-success btn-lg me-2">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                    
+                    <button class="btn btn-outline-primary" onclick="window.history.back()">
+                        <i class="fas fa-arrow-left"></i> Back to Products
+                    </button>
+                </div>
+                
+                <div class="mt-4">
+                    <h5>Product Description</h5>
+                    <p id="product-description">High-quality product from South Texas Propane. Contact us for more information about specifications and availability.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const productName = urlParams.get('name');
+            const productPrice = urlParams.get('price');
+            const productImage = urlParams.get('image');
+
+            // Populate product details
+            if (productName) {
+                document.getElementById('product-name').textContent = productName;
+                document.getElementById('product-title').textContent = productName + ' - South Texas Propane';
+            }
+            if (productPrice) {
+                document.getElementById('product-price').textContent = productPrice;
+            }
+            if (productImage) {
+                document.getElementById('product-image').src = productImage;
+                document.getElementById('product-image').alt = productName || 'Product Image';
+            }
+            if (productId) {
+                document.getElementById('product-id').textContent = productId;
+            }
+
+            // Add to cart functionality
+            document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+                const quantity = document.getElementById('quantity').value;
+                
+                // Simple cart implementation using localStorage
+                let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+                
+                const existingItem = cart.find(item => item.id === productId);
+                if (existingItem) {
+                    existingItem.quantity += parseInt(quantity);
+                } else {
+                    cart.push({
+                        id: productId,
+                        name: productName,
+                        price: productPrice,
+                        image: productImage,
+                        quantity: parseInt(quantity)
+                    });
+                }
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+                
+                // Show confirmation
+                alert(`Added ${quantity} x ${productName} to cart!`);
+            });
+        });
+    </script>
+</body>
+</html>

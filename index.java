@@ -33,12 +33,16 @@ document.addEventListener('DOMContentLoaded', function() {
             if (i === 2) {
                 fastenalItems.push({
                     name: '1/4"-20 ASTM A563 Grade A Zinc Finish Steel Jam Nut',
-                    price: '15¢'
+                    price: '15¢',
+                    image: 'Fastenal No 1136202.jpg',
+                    id: 'fastenal-jam-nut'
                 });
             } else {
                 fastenalItems.push({
                     name: `Fastenal Item ${i}`,
-                    price: `$${(Math.random() * 50 + 5).toFixed(2)}`
+                    price: `$${(Math.random() * 50 + 5).toFixed(2)}`,
+                    image: 'company-logo.png',
+                    id: `fastenal-item-${i}`
                 });
             }
         }
@@ -47,9 +51,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function getDummyItems(category) {
         return [
-            { name: `${category} Item 1`, price: '$19.99' },
-            { name: `${category} Item 2`, price: '$29.99' },
-            { name: `${category} Item 3`, price: '$39.99' },
+            { name: `${category} Item 1`, price: '$19.99', image: 'company-logo.png', id: `${category.toLowerCase()}-item-1` },
+            { name: `${category} Item 2`, price: '$29.99', image: 'company-logo.png', id: `${category.toLowerCase()}-item-2` },
+            { name: `${category} Item 3`, price: '$39.99', image: 'company-logo.png', id: `${category.toLowerCase()}-item-3` },
         ];
     }
 
@@ -63,8 +67,26 @@ document.addEventListener('DOMContentLoaded', function() {
         
         itemsToShow.forEach(item => {
             const itemElement = document.createElement('div');
-            itemElement.className = 'item mb-3 p-3 border rounded';
-            itemElement.innerHTML = `<h5>${item.name}</h5><p class="text-success fw-bold">${item.price}</p>`;
+            itemElement.className = 'item mb-3 p-3 border rounded product-card';
+            itemElement.style.cursor = 'pointer';
+            itemElement.innerHTML = `
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <img src="${item.image}" alt="${item.name}" class="img-fluid rounded" style="max-height: 120px; object-fit: cover;">
+                    </div>
+                    <div class="col-md-9">
+                        <h5 class="mb-2">${item.name}</h5>
+                        <p class="text-success fw-bold mb-2">${item.price}</p>
+                        <button class="btn btn-primary btn-sm">View Details</button>
+                    </div>
+                </div>
+            `;
+            
+            // Make entire card clickable
+            itemElement.onclick = () => {
+                window.location.href = `product-detail.html?id=${item.id}&name=${encodeURIComponent(item.name)}&price=${encodeURIComponent(item.price)}&image=${encodeURIComponent(item.image)}`;
+            };
+            
             itemsContainer.appendChild(itemElement);
         });
 
