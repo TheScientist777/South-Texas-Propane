@@ -37,6 +37,30 @@ document.addEventListener('DOMContentLoaded', function() {
                     image: 'Fastenal No 1136202.jpg',
                     id: 'fastenal-jam-nut'
                 });
+            } else 
+            if (i === 3) {
+                fastenalItems.push({
+                    name: '1/4"-20 Grade C Zinc Finish Steel Top Lock Nut',
+                    price: '20¢',
+                    image: 'Fastenal No 1137260.jpg',
+                    id: 'fastenal-jam-nut'
+                });
+            } else
+            if (i === 4) {
+                fastenalItems.push({
+                    name: '1/4"-28 Zinc Finish Grade A Finished Hex Nut',
+                    price: '15¢',
+                    image: 'Fastenal No 36152.jpg',
+                    id: 'fastenal-jam-nut'
+                });
+            } else
+            if (i === 5) {
+                fastenalItems.push({
+                    name: '1/4"-28 Grade C Zinc Finish Steel Top Lock Nut',
+                    price: '40¢',
+                    image: 'Fastenal No 1137300.jpg',
+                    id: 'fastenal-jam-nut'
+                });
             } else {
                 fastenalItems.push({
                     name: `Fastenal Item ${i}`,
