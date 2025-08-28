@@ -69,6 +69,8 @@
             const productPrice = urlParams.get('price');
             const productImage = urlParams.get('image');
 
+            console.log('Product detail params:', { productId, productName, productPrice, productImage });
+
             // Populate product details
             if (productName) {
                 document.getElementById('product-name').textContent = productName;

@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function getItemsByCategory(category) {
         if (category === 'Fastenal') {
             return getFastenalItems();
+        } else if (category === 'Screws') {
+            return getScrewsItems();
         } else {
             return getDummyItems(category);
         }
@@ -73,6 +75,42 @@ document.addEventListener('DOMContentLoaded', function() {
         return fastenalItems;
     }
 
+    function getScrewsItems() {
+        const screwsItems = [];
+        for (let i = 1; i <= 12; i++) {
+            if (i === 1) {
+                screwsItems.push({
+                    name: '#8 x 3/4 in.',
+                    price: '1 lb = $8 444pcs and 1/2 lb = $4.50 222pcs',
+                    image: 'grip-rite-wood-screws-3_4 22.jpg',
+                    id: 'screws-wood-8x1-75'
+                });
+            } else if (i === 2) {
+                screwsItems.push({
+                    name: '#6 x 1 in. #2 Phillips',
+                    price: '1 lb = $8 364pcs and 1/2 lb = $4.50 182pcs',
+                    image: 'grip-rite-drywall-screws-1inch.jpg',
+                    id: 'screws-wood-8x1-75'
+                });
+            } else if (i === 3) {
+                screwsItems.push({
+                    name: '#9 x 2-1/2 in. #2 Phillips',
+                    price: '1 lb = $10 and 1/2 lb = $4',
+                    image: 'grip-rite-deck-screws-2 1:2 in.jpg',
+                    id: 'screws-wood-8x1-75'
+                });
+            } else {
+                screwsItems.push({
+                    name: `Screws Item ${i}`,
+                    price: `$${(Math.random() * 15 + 3).toFixed(2)}`,
+                    image: 'company-logo.png',
+                    id: `screws-item-${i}`
+                });
+            }
+        }
+        return screwsItems;
+    }
+
     function getDummyItems(category) {
         return [
             { name: `${category} Item 1`, price: '$19.99', image: 'company-logo.png', id: `${category.toLowerCase()}-item-1` },
@@ -82,6 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function displayItems(allItems, category) {
+        console.log('displayItems called with:', category, 'items:', allItems.length);
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
         const itemsToShow = allItems.slice(startIndex, endIndex);
@@ -90,13 +129,14 @@ document.addEventListener('DOMContentLoaded', function() {
         itemsContainer.innerHTML = '';
         
         itemsToShow.forEach(item => {
+            console.log('Displaying item:', item.name, 'with image:', item.image);
             const itemElement = document.createElement('div');
             itemElement.className = 'item mb-3 p-3 border rounded product-card';
             itemElement.style.cursor = 'pointer';
             itemElement.innerHTML = `
                 <div class="row align-items-center">
                     <div class="col-md-3">
-                        <img src="${item.image}" alt="${item.name}" class="img-fluid rounded" style="max-height: 120px; object-fit: cover;">
+                    <img src="${item.image}" alt="${item.name}" class="img-fluid rounded" style="max-height: 120px; object-fit: cover;" onerror="console.log('Image failed to load:', '${item.image}'); this.src='company-logo.png';">
                     </div>
                     <div class="col-md-9">
                         <h5 class="mb-2">${item.name}</h5>
